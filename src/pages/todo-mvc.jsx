@@ -15,14 +15,24 @@ class TodoMvc extends Component {
         }
     }
 
+
+    componentWillUnmount() {
+        window.onhashchange = null
+    }
+
     componentDidMount() {
-        // const setState = this.setState;
-        // var router = Router({
-        //     '/': setState.bind(this, {nowShowing: app.ALL_TODOS}),
-        //     '/active': setState.bind(this, {nowShowing: app.ACTIVE_TODOS}),
-        //     '/completed': setState.bind(this, {nowShowing: app.COMPLETED_TODOS})
-        // });
-        // router.init('/');
+        this.changeNowShowingByHash(window.location.hash);
+        window.onhashchange = event => this.changeNowShowingByHash(event.newURL)
+    }
+
+    changeNowShowingByHash(hash) {
+        if (hash.endsWith('/')) {
+            this.setState({nowShowing: ALL_TODOS});
+        } else if (hash.endsWith('/active')) {
+            this.setState({nowShowing: ACTIVE_TODOS});
+        } else {
+            this.setState({nowShowing: COMPLETED_TODOS});
+        }
     }
 
     handleChange = (event) => {

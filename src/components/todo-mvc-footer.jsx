@@ -19,13 +19,13 @@ export default class TodoMvcFooter extends Component {
                 </span>
                 <ul className="filters">
                     <li>
-                        <a href="#/" className={classnames({selected: nowShowing === ALL_TODOS})}></a>
+                        <a href="#/" className={classnames({selected: nowShowing === ALL_TODOS})}>ALL</a>
                     </li>
                     <li>
-                        <a href="#/active" className={classnames({selected: nowShowing === ACTIVE_TODOS})}></a>
+                        <a href="#/active" className={classnames({selected: nowShowing === ACTIVE_TODOS})}>ACTIVE</a>
                     </li>
                     <li>
-                        <a href="#/completed" className={classnames({selected: nowShowing === COMPLETED_TODOS})}></a>
+                        <a href="#/completed" className={classnames({selected: nowShowing === COMPLETED_TODOS})}>COMPLETED</a>
                     </li>
                 </ul>
                 {clearButton}
